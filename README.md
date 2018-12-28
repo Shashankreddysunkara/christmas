@@ -1,4 +1,9 @@
 # christmas
 A sample app to deploy to cloud foundry
-https://howtodoinjava.com/spring-cloud/pivotal-cloud-foundry-spring-boot-example/
+
+
+# https://howtodoinjava.com/spring-cloud/pivotal-cloud-foundry-spring-boot-example/
+
+
+# Endpoint to test:
 http://localhost:8080/hello?name=howtodoinjava
