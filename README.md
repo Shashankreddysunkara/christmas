@@ -1,5 +1,5 @@
 # christmas
-A sample app to deploy to cloud foundry
+A sample app to deploy to cloud foundry.
 
 # References:
 https://howtodoinjava.com/spring-cloud/pivotal-cloud-foundry-spring-boot-example/
