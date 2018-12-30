@@ -1,56 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <servers>
-    <server>
-      <username>${security.getCurrentUsername()}</username>
-      <password>${security.getEscapedEncryptedPassword()!"*** Insert encrypted password here ***"}</password>
-      <id>central</id>
-    </server>
-    <server>
-      <username>${security.getCurrentUsername()}</username>
-      <password>${security.getEscapedEncryptedPassword()!"*** Insert encrypted password here ***"}</password>
-      <id>snapshots</id>
-    </server>
-  </servers>
-  <profiles>
-    <profile>
-      <repositories>
-        <repository>
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
-          <id>central</id>
-          <name>libs-release</name>
-          <url>http://localhost:8081/artifactory/libs-release</url>
-        </repository>
-        <repository>
-          <snapshots />
-          <id>snapshots</id>
-          <name>libs-snapshot</name>
-          <url>http://localhost:8081/artifactory/libs-snapshot</url>
-        </repository>
-      </repositories>
-      <pluginRepositories>
-        <pluginRepository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-          <id>central</id>
-          <name>libs-release</name>
-          <url>http://localhost:8081/artifactory/libs-release</url>
-        </pluginRepository>
-        <pluginRepository>
-          <snapshots />
-          <id>snapshots</id>
-          <name>libs-snapshot</name>
-          <url>http://localhost:8081/artifactory/libs-snapshot</url>
-        </pluginRepository>
-      </pluginRepositories>
-      <id>artifactory</id>
-    </profile>
-  </profiles>
-  <activeProfiles>
-    <activeProfile>artifactory</activeProfile>
-  </activeProfiles>
+<settings
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd"
+	xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<servers>
+		<server>
+			<id>release</id>
+			<username>${env.ARTIFACTORY_USERNAME}</username>
+			<password>${env.ARTIFACTORY_ENCRYPTED_PASSWORD"}</password>		
+		</server>
+		<server>
+			<id>snapshots</id>
+			<username>${env.ARTIFACTORY_USERNAME}</username>
+			<password>${env.ARTIFACTORY_ENCRYPTED_PASSWORD"}</password>			
+		</server>
+	</servers>
+	
+	<profiles>
+		<profile>
+			<!-- ARTIFACTORY PROFILE -->
+			<id>artifactory</id>
+			<properties>
+				<additionalparam>-Xdoclint:none</additionalparam>
+				<maven.javadoc.skip>true</maven.javadoc.skip>
+			</properties>
+			<repositories>
+				<repository>
+					<!-- RELEASES -->
+					<id>release</id>
+					<name>libs-release-local</name>
+					<url>http://localhost:8081/artifactory/libs-release-local</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<!-- SNAPSHOTS -->
+					<id>snapshots</id>
+					<name>libs-snapshot-local</name>
+					<url>http://localhost:8081/artifactory/libs-snapshot-local</url>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<!-- DISABLE CENTRAL -->
+					<id>central</id>
+					<url>http://repo1.maven.org/maven2</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<!-- RELEASES -->
+					<id>release</id>
+					<name>libs-release-local</name>
+					<url>http://localhost:8081/artifactory/libs-release-local</url>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</pluginRepository>
+				<pluginRepository>
+					<!-- SNAPSHOTS -->
+					<id>snapshots</id>
+					<name>libs-snapshot-local</name>
+					<url>http://localhost:8081/artifactory/libs-snapshot-local</url>
+					<snapshots />
+				</pluginRepository>
+				<pluginRepository>
+					<!-- DISABLE CENTRAL -->
+					<id>central</id>
+					<url>http://repo1.maven.org/maven2</url>
+					<releases>
+						<enabled>false</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+		<profile>
+			<id>sonar</id>
+			<properties>
+				<sonar.login>b39a4e2558a013565ce8245fdd5ff83cbb5f401b</sonar.login>
+				<sonar.password/>
+				<sonar.host.url>https://sonarcloud.io/</sonar.host.url>
+				<sonar.projectkey>christmas-v0.01</sonar.projectkey>
+				<sonar.organization>shashankreddysunkara-github</sonar.organization>
+			</properties>
+		</profile>
+	</profiles>
+	
+	<activeProfiles>
+		<!-- make the profile active all the time -->
+		<activeProfile>artifactory</activeProfile>
+		<activeProfile>sonar</activeProfile>		
+	</activeProfiles>
+	
+	<pluginGroups>
+		<pluginGroup>org.sonatype.plugins</pluginGroup>
+	</pluginGroups>
 </settings>
