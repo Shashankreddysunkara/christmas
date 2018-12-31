@@ -1,4 +1,4 @@
-node('java8') {
+node {
     withCredentials(
         [usernamePassword(
          credentialsId: 'artifactory-credentials',
