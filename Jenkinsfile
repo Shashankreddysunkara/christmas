@@ -1,4 +1,4 @@
-@Library('shared_Jenkinsfile') _
+@Library('shared-jenkins-lib') _
 Jenkinsfile(cfDomain:'cf2' ,
             cfApplicationName:'christmas' ,
             scmUrl:'https://github.com/shashankreddysunkara/christmas.git',
