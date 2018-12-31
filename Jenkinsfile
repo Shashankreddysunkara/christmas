@@ -1,6 +1,6 @@
-node {
-        stage('Checkout'){
-              echo 'hello'
+node ('java8) {
+        stage('Checkout') {
+              checkout scm
         }
 
         stage('Build') {
@@ -10,4 +10,4 @@ node {
         stage('Publish Artifacts') {
             sh 'mvn -U -s settings.xml -gs settings.xml deploy'
         }
-    }
+}
