@@ -1,4 +1,4 @@
-node ('java8') {
+node('java8') {
         stage('Checkout') {
               checkout scm
         }
