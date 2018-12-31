@@ -1,11 +1,6 @@
 node {
         stage ('Checkout'){
-              checkout([$class: 'GitSCM',
-              branches: [[name: '*/master']],
-              doGenerateSubmoduleConfigurations: false,
-              extensions: [],
-              submoduleCfg: [],
-              userRemoteConfigs: [[credentialsId: 'git-credentials', url: 'https://github.deere.com/JDCP/jdcp-microservice-parent.git']]])
+              echo 'hello'
         }
 
         stage ('Build') {
