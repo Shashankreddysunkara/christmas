@@ -1,13 +1,13 @@
-node {
+node('master') {
         stage('Checkout') {
-              checkout scm
+              checkout([$class: 'GitSCM', branches: [[name: '*/master2']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/shashankreddysunkara/christmas.git']]])
         }
 
         stage('Build') {
-            sh 'mvn -U -s settings.xml clean install'
+            sh 'mvn clean install'
         }
 
         stage('Publish Artifacts') {
-            sh 'mvn -U -s settings.xml deploy'
+            sh 'mvn deploy'
         }
 }
