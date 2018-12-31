@@ -1,4 +1,4 @@
-node('master') {
+node {
         stage('Checkout') {
               checkout([$class: 'GitSCM', branches: [[name: '*/master2']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/shashankreddysunkara/christmas.git']]])
         }
