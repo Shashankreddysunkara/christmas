@@ -1,10 +1,3 @@
-properties (
-    [buildDiscarder
-     (logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '')),disableConcurrentBuilds(), 
-     [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false],
-     [$class: 'ThrottleJobProperty', categories: [], limitOneJobWithMatchingParams: false, maxConcurrentPerNode: 0, maxConcurrentTotal: 0, paramsToUseForLimit: '', throttleEnabled: false, throttleOption: 'project'],
-     pipelineTriggers([githubPush()])])
-
 node('java8') {
     withCredentials(
         [usernamePassword(
