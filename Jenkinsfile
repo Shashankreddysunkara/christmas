@@ -1,9 +1,9 @@
 node {
-        stage ('Checkout'){
+        stage('Checkout'){
               echo 'hello'
         }
 
-        stage ('Build') {
+        stage('Build') {
             sh 'mvn -U -s settings.xml -gs settings.xml clean install'
         }
 
