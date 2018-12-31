@@ -50,7 +50,7 @@
 		<repository>
 			<id>release</id>
 			<name>WDX5CG6152Y110-release</name>
-			<url>https://repository.deere.com/artifactory/jdcp-release-local</url>
+			<url>http://localhost:8040/artifactory/libs-release-local</url>
 		</repository>
 	</distributionManagement>
 	
