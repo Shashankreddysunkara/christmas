@@ -6,8 +6,8 @@
 	<servers>
 		<server>
 			<id>release</id>
-			<username>${env.ARTIFACTORY_USERNAME}</username>
-			<password>${env.ARTIFACTORY_ENCRYPTED_PASSWORD"}</password>		
+			<username>${env.ARTIFACTORY_US}</username>
+			<password>${env.ARTIFACTORY_ENCRYPTED_PAS"}</password>		
 		</server>
 		<server>
 			<id>snapshots</id>
