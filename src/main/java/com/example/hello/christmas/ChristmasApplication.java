@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class ChristmasApplication {
 
 	public static void main(String[] args) {
-		try {
-			Thread.sleep(30000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+// 		try {
+// 			Thread.sleep(30000);
+// 		} catch (InterruptedException e) {
+// 			// TODO Auto-generated catch block
+// 			e.printStackTrace();
+// 		}
 		SpringApplication.run(ChristmasApplication.class, args);
 	}
 
